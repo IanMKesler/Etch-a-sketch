@@ -2,6 +2,7 @@ function createGrid(rows,columns){
     for(let i = 0; i<(rows*columns); i++){
         const item = document.createElement("div");
         item.classList.add("grid-item");
+        item.style.cssText = "background-color: rgb(255,255,255);";
 
         container.appendChild(item);
 
@@ -30,18 +31,36 @@ function randRGB(){
     return(rgb.join());
 }
 
-function shadeRGB(){
+function shadeRGB(style){
+    let left = style.indexOf("(");
+    let right = style.indexOf(")");
+    let rgb = style.substring(left+1,right);
+    let values = rgb.split(",").map(Number);
+        
     
+
+    values.forEach((value, index, values) => {
+        if(values[index]>=25){
+            values[index] -= 25;
+        } else {
+            values[index] = 0;
+        }
+        
+    });
+    return(values.join());
+
 }
 
 function draw(event){
 
-    this.style.cssText = "background-color: rgb("+randRGB()+");";
+    //this.style.cssText = "background-color: rgb("+randRGB()+");";
 
-    //this.style.cssText = "background-color: rgb("+shadeRGB()+");";
+    let style = this.style.cssText;
+    shadeRGB(style);
+    this.style.cssText = "background-color: rgb("+shadeRGB(style)+");";
 
 
-    //this.style.cssText = "background-color: black";
+    //this.style.cssText = "background-color: rgb(0,0,0);";
 
 }
 
