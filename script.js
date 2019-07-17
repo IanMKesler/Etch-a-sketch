@@ -19,8 +19,29 @@ function deleteGrid(){
     }
 }
 
+function randRGB(){
+    let rgb = [];
+
+    for(let i = 0; i<3; i++){
+        let value = Math.round(Math.random()*255);
+        rgb.push(value);
+    }
+
+    return(rgb.join());
+}
+
+function shadeRGB(){
+    
+}
+
 function draw(event){
-    this.style.cssText = "background-color: black";
+
+    this.style.cssText = "background-color: rgb("+randRGB()+");";
+
+    //this.style.cssText = "background-color: rgb("+shadeRGB()+");";
+
+
+    //this.style.cssText = "background-color: black";
 
 }
 
