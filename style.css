@@ -1,0 +1,26 @@
+/*Align body to center of page*/
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*Create a 16 by 16 grid of squares*/
+.grid-container{
+    height: 500px;
+    width: 500px;
+    
+    margin: 0;
+    padding: 0;
+    display: grid;
+
+    grid-template-columns: repeat(16,16fr);
+    grid-template-rows: repeat(16,16fr);
+}
